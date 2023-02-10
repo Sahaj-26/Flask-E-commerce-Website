@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Register Page
+{% endblock %}
+
+{% block content %}
+<!-- {{ form }}       Jinja syntax, we can see the object of the form <market.forms.RegisterForm object at 0x000001F293BA1150>  -->
+<body class="text-center">
+    <div class="container">
+        <form method="POST" class=""form-register" style="color:white">     <!-- POST register method used to view data in the database -->
+            {{ form.hidden_tag() }} <!-- protects from attack 'cross site request forgery' by generating some token -->
+            <img class="mb-4" src="../../FlaskMarket/MyMarket-1.png" alt="MyMarket Logo">
+            <!-- <img class="mb-4" src="https://res.cloudinary.com/jimshapedcoding/image/upload/v1597332609/android-icon-192x192_ove2a7.png" alt=""> -->
+            <h1 class="h3 mb-3 font-weight-normal">
+                Please Create your Account
+            </h1>
+            <br>    <!-- break line tag to create separation btw header and the fields -->
+            {{ form.username.label() }}
+            {{ form.username(class="form-control", placeholder="User Name") }}
+
+            {{ form.email_address.label() }}
+            {{ form.email_address(class="form-control", placeholder="Email Address") }}
+
+            {{ form.password1.label() }}
+            {{ form.password1(class="form-control", placeholder="Password") }}
+
+            {{ form.password2.label() }}
+            {{ form.password2(class="form-control", placeholder="Confirm Password") }}
+
+            <br>
+
+            <div class="checkbox mb-3">
+                <h6>Already have an account?</h6>
+                <a class="btn btn-sm btn-secondary" href="{{ url_for('login_page') }}">Login</a>
+             </div>
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        </form>
+    </div>
+</body>
+{% endblock %}
+
